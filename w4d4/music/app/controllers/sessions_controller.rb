@@ -5,14 +5,15 @@ class SessionsController < ApplicationController
   end
 
   def create #- prcoesses login Form
-    @user = User.find_by_credentials(params[:user][:email], params[:user][:password])
+    @user = User.find_by_credentials(params[:session][:email], params[:session][:password])
 
     if @user.nil?
       flash.now[:errors] = ["Incorrect credentials"]
       render :new
     else
       login_user!(@user)
-      redirect_to user_show(@user)
+      @user = current_user
+      redirect_to user_url(@user)
     end
   end
 
