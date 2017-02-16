@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       redirect_to user_url(@user)
       return
     else
-      flash.now[:errors] = @user.errors.full_messages
+      flash.now[:errors] = ['failed to create user']
       render :new
     end
   end
