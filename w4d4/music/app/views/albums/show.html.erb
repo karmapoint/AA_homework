@@ -1,0 +1,11 @@
+<h1> <%= @album.name %> </h1>
+
+<h2>by <%= band = Band.find(@album.band_id).name %></h2>
+<h3> <%= @album.album_type %> recording </h3>
+<% @album.tracks.each do |track| %>
+  <ul>
+    <li> <%= track.song  %> </li>
+  </ul>
+<% end  %>
+
+<%= link_to "Back to artist page", band_url(@album.band_id) %>

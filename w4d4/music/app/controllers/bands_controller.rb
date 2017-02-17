@@ -13,7 +13,7 @@ class BandsController < ApplicationController
   def create
     @band = Band.new(band_params)
     if @band.save
-      redirect_to band_url(@band)
+      redirect_to band_url
       return
     else
       flash.now[:errors] = ['failed to add band']
@@ -32,9 +32,20 @@ class BandsController < ApplicationController
   end
 
   def update
+    @band = Band.find(params[:id])
+    if @band.update(band_params)
+      redirect_to band_url(@band)
+      return
+    else
+      flash.now[:errors] = ['failed to update band']
+      render :edit
+    end
   end
 
   def destroy
+    @band = Band.find(params[:id])
+    @band.destroy
+    redirect_to bands_url
   end
 
   private

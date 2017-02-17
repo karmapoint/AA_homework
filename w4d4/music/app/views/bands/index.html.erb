@@ -3,7 +3,7 @@
 
 <% @bands.each do |band| %>
   <ul>
-    <li> <%= link_to band.name, band_url(band)  %> </li>
+    <li> <strong><%= link_to band.name, band_url(band)  %></strong> | <%= link_to "Edit band", edit_band_url(band) %> | <%= link_to "Delete", band, method: :delete %></li>
   </ul>
 <% end  %>
 
