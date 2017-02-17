@@ -8,9 +8,7 @@
 </head>
 <body>
 <p><%= flash[:errors]  %></p>
-<% if logged_in? %>
-  <%= button_to "Log out", session_url, method: :delete  %>
-<% end  %>
+<% if logged_in? %><%=current_user.email%><%= button_to "Log out", session_url, method: :delete  %><% end  %>
 
 <%= yield %>
 

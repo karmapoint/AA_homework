@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
   helper_method :login_user!
   helper_method :logout_user!
 
+  def require_user!
+    redirect_to new_session_url unless logged_in?
+  end
 
   def current_user
     return nil unless session[:session_token]
@@ -15,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    return true if @current_user
+    return true if session[:session_token]
   end
 
   def login_user!(user)

@@ -1,0 +1,9 @@
+<h1> <%= @track.song %> </h1>
+
+<h2>on <%= album = Album.find(@track.album_id).name %></h2>
+<h3> <%= @track.track_type %> track </h3>
+
+<h3>Lyrics:</h3>
+<p> <%= @track.lyrics %></p>
+
+<%= link_to "Back to album page", album_url(@track.album_id) %>

@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-
+ before_action :require_user!
   def new
     @album = Album.new
     render :new
