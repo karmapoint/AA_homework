@@ -1,0 +1,11 @@
+<h1><%= @post.title %></h1>
+
+<p><%= link_to "Link", @post.url, target: "_blank" %><p>
+
+<p><strong>Content:</strong><br> <%= @post.content %> </p>
+<p><strong>sub:</strong> <%= link_to @post.sub.title, sub_url(@post.sub_id) %>
+<p><strong>author:</strong> <%= @post.author.username %>
+<br>
+<% if logged_in? %>
+  <%= link_to "Edit Post", "/users/#{@post.user_id}/posts/#{@post.id}/edit" %>
+<% end %>

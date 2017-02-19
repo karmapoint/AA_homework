@@ -1,0 +1,15 @@
+<h1>ALL THE SUBS</h1>
+  <%= flash[:errors]  %>
+<ul>
+  <% @subs.each do |sub| %>
+    <li><%= link_to sub.title, sub_url(sub.id)  %>
+      <% if logged_in? %>
+      | <%= link_to "Edit", "/users/#{current_user.id}/subs/#{sub.id}/edit"  %>
+      <% end %>
+    </li>
+    <% end  %>
+</ul>
+
+  <% if logged_in? %>
+    <%= link_to "New sub", new_sub_url %>
+  <% end %>

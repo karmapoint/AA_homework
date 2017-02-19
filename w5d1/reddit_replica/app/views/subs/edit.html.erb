@@ -1,0 +1,20 @@
+<h1>Edit Sub</h1>
+
+<%= flash[:errors]  %>
+
+<form  action=" <%= user_sub_url  %>" method="post">
+  <input type="hidden" name="authenticity_token" value=" <%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH">
+
+  <input type="hidden" name="sub[user_id]" value=" <%= @current_user.id  %>">
+  <label> Title:
+    <input type="text" name="sub[title]" value="<%= @sub.title %>">
+  </label>
+  <br>
+  <label> Description:<br>
+    <textarea name="sub[description]" rows="8" cols="80"><%= @sub.description %></textarea>
+  </label>
+  <br>
+  <input type="submit"  value="Edit Sub">
+
+</form>

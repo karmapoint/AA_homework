@@ -1,0 +1,19 @@
+<h1>Edit Post!</h1>
+
+<%= flash[:errors] %>
+
+<form action=" <%= user_post_url %> " method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="authenticity_token" value=" <%= form_authenticity_token %> ">
+  <label for="title">Title</label>
+  <input id= "title" type="text" name="post[title]" value="<%= @post.title %>">
+  <br>
+  <label for="url">URL</label>
+  <input type="text" name="post[url]" value="<%= @post.url %>">
+  <br>
+  <label for="content">Content</label>
+  <br>
+  <textarea id= "content" name="post[content]" rows="8" cols="80"><%= @post.content %></textarea>
+  <br>
+  <input type="submit" value="Edit Post">
+</form>
